@@ -1072,3 +1072,40 @@ attributes:
       v:
         soft: The text in the textarea is not wrapped when submitted in a form. This is default
         hard: The text in the textarea is wrapped (contains newlines) when submitted in a form. When "hard" is used, the cols attribute must be specified
+  - name:
+      t: meta
+      v:        
+        application-name:
+        author:
+        description:
+        generator:
+        keywords:
+        viewport:
+        MobileOptimized:
+        HandheldFriendly:
+  - content:
+      t: meta
+      v:
+        width: |
+          The width of the virtual viewport of the device.
+            Ex: width=device-width, initial-scale=1.0
+        device-width: |
+          "The physical width of the device's screen."
+            Ex: width=device-width, initial-scale=1.0
+        height: "The height of the \"virtual viewport\" of the device."
+        device-height: |
+          The physical height of the device's screen.
+            Ex: width=device-width, initial-scale=1.0
+        initial-scale: |
+          The initial zoom when visiting the page. 1.0 does not zoom.
+            Ex: width=device-width, initial-scale=1.0
+        minimum-scale: |
+          The minimum amount the visitor can zoom on the page. 1.0 does not zoom.
+            Ex: width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no
+        maximum-scale: |
+          The maximum amount the visitor can zoom on the page. 1.0 does not zoom.
+            Ex: width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no
+        user-scalable: |
+          Allows the device to zoom in and out. Values are yes or no.
+            Ex: width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no
+          
