@@ -545,13 +545,42 @@ types:
     rest: A shorthand property for setting the rest-before and rest-after properties\nCSS3
     rest-after: "Specifies a rest or prosodic boundary to be observed after speaking an element's content\nCSS3"
     rest-before: "Specifies a rest or prosodic boundary to be observed before speaking an element's content\nCSS3"
+
+    
+    volume: Volume refers to the median volume of the waveform.
+    speak: Specifies whether text will be rendered aurally and if so, in what manner.
+    speak-as: |
+      The "speak-as" property determines in what manner text gets rendered aurally, based upon a predefined list of possibilities.
+       Value: normal | spell-out || digits || [ literal-punctuation | no-punctuation ]
+      CSS3
+    pause-before: "Specify a pause to be observed before speaking an element's content."
+    pause-after: "Specify a pause to be observed after speaking an element's content."
+    pause: "The 'pause' property is a shorthand for setting 'pause-before' and 'pause-after'. If two values are given, the first value is 'pause-before' and the second is 'pause-after'. If only one value is given, it applies to both properties. "
+    cue-before: "Auditory icons are another way to distinguish semantic elements. Sounds may be played before and/or after the element to delimit it."
+    cue-after: "Auditory icons are another way to distinguish semantic elements. Sounds may be played before and/or after the element to delimit it."
+    cue: The 'cue' property is a shorthand for setting 'cue-before' and 'cue-after'.
+    play-during: "Similar to the 'cue-before' and 'cue-after' properties, this property specifies a sound to be played as a background while an element's content is spoken."
+    azimuth: This property is most likely to be implemented by mixing the same signal into different channels at differing volumes
+    elevation: The precise means used to achieve this effect and the number of speakers used to do so are undefined.
+    speech-rate: This property specifies the speaking rate.\nNote that both absolute and relative keyword values are allowed (compare with 'font-size'). 
+    voice-family: The value is a comma-separated, prioritized list of voice family names (compare with 'font-family'). 
+    pitch: Specifies the average pitch (a frequency) of the speaking voice.\n <frequency> | x-low | low | medium | high | x-high | inherit
+    pitch-range: The perceived pitch of a human voice is determined by the fundamental frequency and typically has a value of 120Hz for a male voice and 210Hz for a female voice.
+    stress: Specifies the height of "local peaks" in the intonation contour of a voice.
+    richness: Specifies the richness, or brightness, of the speaking voice.
+    speak-punctuation: This property specifies how punctuation is spoken.
+    speak-numeral: This property controls how numerals are spoken.
+    speak-header: "This property specifies whether table headers are spoken before every cell, or only before a cell when that cell is associated with a different header than the previous cell.\n Value: once | always"
+    
     voice-balance: Specifies the balance between left and right channels\nCSS3
     voice-duration: "Specifies how long it should take to render the selected element's content\nCSS3"
+    
     voice-pitch: Specifies the average pitch (a frequency) of the speaking voice\nCSS3
     voice-pitch-range: Specifies variation in average pitch\nCSS3
     voice-rate: Controls the speaking rate\nCSS3
     voice-stress: Indicates the strength of emphasis to be applied\nCSS3
     voice-volume: Refers to the amplitude of the waveform output by the speech synthesises\nCSS3
+
     marquee-direction: Sets the direction of the moving content\nCSS3
     marquee-play-count: Sets how many times the content move\nCSS3
     marquee-speed: Sets how fast the content scrolls\nCSS3
