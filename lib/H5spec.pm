@@ -7,6 +7,8 @@ use Carp;
 use YAML qw/Load/;
 use Data::Dumper;
 
+our $VERSION = '1.01'; # Don't forget to set version and release date in POD!
+
 =head1 NAME
 
 H5spec - yaml spec file reader
@@ -138,4 +140,16 @@ sub traverseValues {
     }
 }
 
+sub traverseTags {
+    my $self = shift;
+    my $cb = shift;
+
+    return unless exists $self->{yaml}{tags};
+
+    die "In your yaml config file, \"tags\" must be hash" if (ref $self->{yaml}{tags} ne 'HASH');
+
+    while (my ($tag, $documentation) = each $self->{yaml}{tags}){
+        $cb->($tag, $documentation //= '');
+    }
+}
 1;
