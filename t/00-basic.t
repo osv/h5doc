@@ -65,7 +65,7 @@ subtest 'traverseAttr' => sub {
 
     my $count = 0;
 
-    $h->traverseAttr(
+    $h->traverseValues(
         sub {
             my ($tag, $attribute, $values) = @_;
             $count++;
@@ -73,3 +73,4 @@ subtest 'traverseAttr' => sub {
         });
     is ($count, 6, "Tags count");
 }
+

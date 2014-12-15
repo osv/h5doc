@@ -85,7 +85,7 @@ Where
 
 =cut
 
-sub traverseAttr {
+sub traverseValues {
     my $self = shift;
     my $cb = shift;
 
