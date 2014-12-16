@@ -1,4 +1,4 @@
-package H5spec;
+package Data::H5spec;
 
 use strict; 
 use warnings;

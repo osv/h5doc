@@ -8,7 +8,7 @@ use strict;
 use Getopt::Long;
 use FindBin;
 use File::Spec;
-use H5spec;
+use Data::H5spec;
 use File::Slurp qw/read_file write_file/;
 use File::Path qw/mkpath/;
 use Data::Dumper;
@@ -56,7 +56,7 @@ main: {
         exit(0);
     }
 
-    my $spec = H5spec->new(''.read_file($yamlFile));
+    my $spec = Data::H5spec->new(''.read_file($yamlFile));
 
     mkpath $outputdir;
 

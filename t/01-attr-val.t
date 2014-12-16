@@ -5,9 +5,9 @@ use strict;
 use Scalar::Util qw/blessed/;
 use Data::Dumper;
 
-BEGIN { use_ok( "H5spec" ); }
+BEGIN { use_ok( "Data::H5spec" ); }
 
-my $h = H5spec->new(<<YAMLDATE);
+my $h = Data::H5spec->new(<<YAMLDATE);
 type:
   charset: &CHARSETS
     utf-7: 

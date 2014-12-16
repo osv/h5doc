@@ -4,8 +4,8 @@ use Test::More qw( no_plan );
 use strict;
 use Data::Dumper;
 
-BEGIN { use_ok( "H5spec" ); }
-my $h = H5spec->new(<<YAMLTAG);
+BEGIN { use_ok( "Data::H5spec" ); }
+my $h = Data::H5spec->new(<<YAMLTAG);
 tags:
   div:
   nav: |

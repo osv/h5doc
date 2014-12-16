@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME => "H5spec",
-    VERSION_FROM => "lib/H5spec.pm",
+    VERSION_FROM => "lib/Data/H5spec.pm",
     AUTHOR => 'Olexandr Sydorchuk',
     EXE_FILES => [ 'build-ac-html-attr-val.pl' ],
 
