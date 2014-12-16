@@ -71,6 +71,6 @@ subtest 'traverseAttr' => sub {
             $count++;
             is_deeply($values, $expect->{"$tag-$attribute"}, "\"$tag\" \"$attribute\"")
         });
-    is ($count, 6, "Tags count");
+    is ($count, 6, "Attribute value count");
 }
 
