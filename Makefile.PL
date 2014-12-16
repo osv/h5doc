@@ -5,7 +5,7 @@ WriteMakefile(
     NAME => "H5spec",
     VERSION_FROM => "lib/Data/H5spec.pm",
     AUTHOR => 'Olexandr Sydorchuk',
-    EXE_FILES => [ 'build-ac-html-attr-val.pl' ],
+    EXE_FILES => [ 'build-ac-html-stuff' ],
 
     PREREQ_PM => {
         'Carp'              => '0',
