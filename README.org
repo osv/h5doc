@@ -1,0 +1,46 @@
+[[https://travis-ci.org/osv/h5doc][file:https://api.travis-ci.org/osv/h5doc.svg?branch=master]]
+
+* What’s this?
+
+This is script for generate completion sources for [[https://github.com/cheunghy/ac-html][ac-html]]
+
+* Run
+
+#+BEGIN_EXAMPLE
+build-ac-html-stuff -out ~/my-ac-html ./text/attr-values.yaml 
+#+END_EXAMPLE
+
+* YAML configuration file
+
+#+BEGIN_SRC yaml
+# Define tags, just hash of tag name and documentation
+tags:
+  html: The <html> tag tells the browser that this is an HTML documen...
+  div:
+
+# Define attributes, array of attribute names and properties "t" "v" "d":
+#  where "t" is hash or array or value of tag name;
+#        "v" hash or array of attribute possible values. If hash, documentation is defined;
+#        "d" documentation for this attribute, if not specified,
+#            ATTRIBUTE COPLETION NOT GENERATED only attribute values.
+attributes:
+  - src:
+      t: a
+      d: "The href attribute specifies the link's destination"
+  - dir:
+      t: global
+      v:
+        auto:
+        ltr: Right-to-left text direction
+        rtr: Left-to-right text direction
+      d: |
+        Text direction of the element's content.
+  - charset:
+      t: [meta, script]
+      d:
+
+  # next attribute only define possible values for div.class
+  - class:
+      t: div
+      v: [container, "container-info"]
+#+END_SRC
