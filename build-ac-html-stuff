@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w -Ilib
-# build-ac-html-attr-val.pl --- Build html-stuff for ac-html from yaml file
+# build-ac-html-stuff --- Build html-stuff for ac-html from yaml file
 # Created: 03 Dec 2014
 
 use warnings;
@@ -106,22 +106,23 @@ main: {
             my ($tag, $attribute, $valueRef, $attrDocumentation) = @_;
             my $filename = File::Spec->catfile ($valuedir, "$tag-$attribute");
 
-            write_file($filename,
-                       join "\n"
-                           , map {
-                               if ($valueRef->{$_} ne '') {
-                                   $_ . ' ' . do { (my $newLineEscaped = $valueRef->{$_}) =~ s/\n/\\n/g; 
-                                                   $newLineEscaped }
-                               } else {
-                                   $_
-                               }
-                           } sort keys %{$valueRef}
-                       );
-            print "Create: $filename\n";
-            print Dumper \$attrDocumentation;
+            if (defined $valueRef) {
+                write_file($filename,
+                           join "\n"
+                               , map {
+                                   if ($valueRef->{$_} ne '') {
+                                       $_ . ' ' . do { (my $newLineEscaped = $valueRef->{$_}) =~ s/\n/\\n/g; 
+                                                       $newLineEscaped }
+                                   } else {
+                                       $_
+                                   }
+                               } sort keys %{$valueRef}
+                           );
+                    print "Create: $filename\n";
+            }
 
             if (defined $attrDocumentation) {
-                my $attrFile = File::Spec->catfile ($attrdir, "$tag-$attribute");
+                my $attrFile = File::Spec->catfile ($attrdir, "$tag");
                 unless (-e $attrFile) {
                     print "Create: $attrFile\n";
                 }
