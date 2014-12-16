@@ -55,11 +55,25 @@ sub _tagAttrFromKey {
 
 # add to hash ref newest document
 sub addToRes {
-    my ($res, $tag, $attribute, $v) = @_;
+    my ($res, $tag, $attribute, $v, $documentation) = @_;
     my $resKey = _resKey($tag, $attribute);
 
+    my $rdoc = \$res->{$resKey}->{documentation};
+    if (defined $$rdoc && defined $documentation) {
+        warn <<WARNTTEXT
+Redefined documentation for \"$tag\" \$attribute
+was: $$rdoc
+now: $documentation
+WARNTTEXT
+            ;
+    }
+    if (defined $documentation) {
+        $$rdoc = $documentation;
+    }
+
     foreach my $valuename (keys (%{$v})) {
-        my $rval = \$res->{$resKey}->{$valuename};
+
+        my $rval = \$res->{$resKey}->{values}{$valuename};
         if (($$rval // '') eq '') {
             $$rval = $v->{$valuename} // '';
             next;
@@ -83,11 +97,11 @@ WARNTTEXT
 Where
 
   $cb => sub {
-  my ($tag, $attribute, $valuehash) = @_; }
+  my ($tag, $attribute, $valuehash, $attributeDocumentation) = @_; }
 
 =cut
 
-sub traverseValues {
+sub traverseAttr {
     my $self = shift;
     my $cb = shift;
 
@@ -99,8 +113,6 @@ sub traverseValues {
 
         die "There no \"t\" key in attribute \"$attribute\". You forgot define it?"
             if !exists($currentAttr->{"t"});
-        die "There no \"v\" key in attribute \"$attribute\". You forgot define it?"
-            if !exists($currentAttr->{"v"});
 
         my @tagnames;
         if (ref $currentAttr->{"t"} eq 'HASH') {
@@ -114,20 +126,22 @@ sub traverseValues {
         foreach my $tagname (@tagnames) {
             my $text;
             my $v = $currentAttr->{"v"};
-            unless (defined $v) {
-                warn "Something wrong with attribute: \"$attribute\", tag: \"$tagname\". Check your yaml file. Maybe you used &FooBaar instead *FooBar\n";
-                next;
-            };
+            my $documentation = undef;
+            $documentation = $currentAttr->{"d"} // ''
+                if (exists $currentAttr->{"d"});
 
-            my @values;
             if (ref $v eq 'HASH') {
-                addToRes(\%res, $tagname, $attribute, $v);
+                addToRes(\%res, $tagname, $attribute,
+                         $v,
+                         $documentation);
             } elsif (ref $v eq 'ARRAY') {
                 addToRes(\%res, $tagname, $attribute,
-                         {map { $_ => ''} @{$v}});
+                         {map { $_ => ''} @{$v}},
+                         $documentation);
             } elsif (ref $v eq '') {
                 addToRes(\%res, $tagname, $attribute,
-                         {$v => ''}),
+                         defined $v ? {$v => ''} : undef,
+                         $documentation),
                      }
         }
     }
@@ -135,7 +149,7 @@ sub traverseValues {
     foreach my $k (keys %res) {
         my ($tag, $attribute) = _tagAttrFromKey($k) ;
         if (defined $attribute) {
-            $cb->($tag, $attribute, $res{$k});
+            $cb->($tag, $attribute, $res{$k}{values}, $res{$k}{documentation});
         }
     }
 }
