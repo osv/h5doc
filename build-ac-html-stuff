@@ -130,7 +130,7 @@ main: {
                 if (length $attrDocumentation > $maxdocsize) {
                     my $attrDocFile = File::Spec->catfile ($attrdocdir, "$tag-$attribute");
                     write_file($attrDocFile, $attrDocumentation);
-                    print "Create: $attrDocFile";
+                    print "Create: $attrDocFile\n";
                     print $FHATTR $attribute . "\n";
                 } else {
                     $attrDocumentation =~ s/\n/\\n/g;
