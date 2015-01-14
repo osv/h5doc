@@ -606,6 +606,8 @@ types:
     application/xml: XML files; Defined by RFC 3023
     application/xml-dtd: DTD files; Defined by RFC 3023
     application/xop+xml: XOP
+    application/x-yaml:
+    application/yaml:
     application/zip: ZIP archive files; Registered
     application/gzip: Gzip, Defined in RFC 6713
     application/x-nacl: Native Client web module (supplied via Google Web Store only)
@@ -659,6 +661,8 @@ types:
     text/rtf: RTF; Defined by Paul Lindner
     text/vcard: vCard (contact information); Defined in RFC 6350
     text/vnd.abc: ABC music notation; Registered
+    text/yaml:
+    text/x-yaml:
     text/xml: Extensible Markup Language; Defined in RFC 3023
 
     video/avi: Covers most Windows-compatible formats including .avi and .divx
